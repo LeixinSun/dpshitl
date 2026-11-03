@@ -1,0 +1,37 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/client/ui-hitl-inbox/README.md
+/:
+  en: e34cfe946367e798
+  zh: 9d7a4dff20b0b920
+/deepseek-ai-dsh-client-ui-hitl-inbox:
+  en: a63535aee0e266a1
+  zh: 8429e2a3b3e8c7e0
+/deepseek-ai-dsh-client-ui-hitl-inbox/summary:
+  en: 02c5a3839b6ea06b
+  zh: f7d3fb8eeed597ae
+/deepseek-ai-dsh-client-ui-hitl-inbox/table-of-contents:
+  en: d152484eb41ac6b4
+  zh: 09388d293f9be9cb
+/deepseek-ai-dsh-client-ui-hitl-inbox/use-this-package:
+  en: 5a3502d8c7252372
+  zh: 9a9f42406f7865f4
+/deepseek-ai-dsh-client-ui-hitl-inbox/understand-the-implementation:
+  en: a3b3c5c13723806d
+  zh: 934de073a180ab85
+/deepseek-ai-dsh-client-ui-hitl-inbox/further-exploration:
+  en: bf618244de3babe3
+  zh: 6670c782c550d766
+/deepseek-ai-dsh-client-ui-hitl-inbox/model-experience:
+  en: 550f15e5fd0e4561
+  zh: af2adf18926d0fd3
+/deepseek-ai-dsh-client-ui-hitl-inbox/model-experience/kv-cache-effect:
+  en: 20c4b4468487888b
+  zh: 20c4b4468487888b
+/deepseek-ai-dsh-client-ui-hitl-inbox/known-limitations-and-deferred-work:
+  en: 158a0f350efd915a
+  zh: a66aadf4e63a05e8
+/deepseek-ai-dsh-client-ui-hitl-inbox/known-limitations-and-deferred-work/dev-note:
+  en: e67f633dc6fe7773
+  zh: e15a194c46a2b4d7

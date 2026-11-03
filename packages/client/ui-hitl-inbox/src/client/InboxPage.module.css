@@ -1,0 +1,125 @@
+/* Inbox page: one scroller, a head row that keeps its flow height, and the
+   waiting list below it. Hover affordances sit under @media (hover: hover):
+   a tap latches :hover, which would strand a row in its pointer-only state. */
+
+.page {
+  --inbox-inset: clamp(24px, 4vw, 48px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  /* Inline inset only: the top inset belongs to the head row, because macOS
+     window dragging is owned by a row's own box. */
+  padding: 0 var(--inbox-inset);
+  color: var(--dsw-alias-label-primary);
+}
+
+@media (max-width: 767px) {
+  .page {
+    --inbox-inset: 20px;
+  }
+}
+
+.page > * {
+  flex: none;
+  width: 100%;
+  max-width: 760px;
+}
+
+.head {
+  padding-top: 28px;
+  padding-bottom: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.intro {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.body {
+  padding-bottom: 32px;
+}
+
+.empty {
+  margin: 0;
+  padding: 64px 0;
+  font-size: 13px;
+  color: var(--dsw-alias-label-tertiary);
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--dsw-radius-lg);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .row:hover {
+    background-color: var(--dsw-alias-interactive-bg-hover);
+  }
+}
+
+.row:focus-visible {
+  outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary));
+  outline-offset: -2px;
+}
+
+.dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 7px;
+  border-radius: 50%;
+  corner-shape: round;
+  background: var(--dsw-alias-state-business-primary);
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.rowTitle {
+  overflow: hidden;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rowMeta {
+  overflow: hidden;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rowCount {
+  flex: none;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 11px;
+}

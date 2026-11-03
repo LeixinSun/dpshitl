@@ -313,8 +313,19 @@
     - id: ui-settings-general
       name: '@deepseek-ai/dsh-client-ui-settings-general'
 
+    # Credentials are configured where this deployment is installed, so the
+    # browser never opens the first-run sign-in/API-key step or the preview
+    # notice; the Models page keeps both routes available on request.
     - id: ui-settings-models
       name: '@deepseek-ai/dsh-client-ui-settings-models'
+      config:
+        credentialOnboarding: false
+        welcomeNotice: false
+
+    # Expert inbox: the sidebar Inbox page lists the questions the running
+    # agents are waiting on and opens the Session that asked one.
+    - id: ui-hitl-inbox
+      name: '@deepseek-ai/dsh-client-ui-hitl-inbox'
 
     # Plugin management: the sidebar Plugins page installs, enables, disables,
     # and removes the profile's bundles through the `pluginManager` Remote.
@@ -338,10 +349,6 @@
 
     - id: ui-chat
       name: '@deepseek-ai/dsh-client-ui-chat'
-
-    # Official occupants for the generic sidebar and conversation brand slots.
-    - id: ui-brand-official
-      name: '@deepseek-ai/dsh-client-ui-brand-official'
 
     - id: ui-attachment
       name: '@deepseek-ai/dsh-client-ui-attachment'

@@ -249,7 +249,7 @@ describe('SidebarRoot shell', () => {
     vi.stubEnv('DSH_CLIENT_COMMIT_HASH', '0123456')
     vi.stubEnv('DSH_CLIENT_GIT_DIRTY', 'true')
     vi.stubEnv('DSH_CLIENT_VERSION', '1.2.3-rc.4')
-    const { container } = render(<SidebarRoot
+    render(<SidebarRoot
       drawer={false}
       collapsed={false} width={300}
       useSessions={neverHook} useSessionStatus={useSessionStatus} useSessionRetainInfo={neverHook}
@@ -264,9 +264,10 @@ describe('SidebarRoot shell', () => {
         options?.fallback ?? null) as SidebarRootComponentProps['renderSlot']}
     />)
 
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
+    expect(screen.getByText('dpskhitl')).toBeTruthy()
     expect(screen.getByText('1.2.3-rc.4-0123456-dirty')).toBeTruthy()
-    expect(container.querySelector('svg')).not.toBeNull()
+    // The brand carries no mark artwork of its own; an unoccupied mark slot stays empty.
+    expect(screen.getByText('dpskhitl').closest('[aria-hidden]')!.querySelector('svg')).toBeNull()
   })
 
   it.each([
@@ -289,18 +290,17 @@ describe('SidebarRoot shell', () => {
         options?.fallback ?? null) as SidebarRootComponentProps['renderSlot']}
     />)
 
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
+    expect(screen.getByText('dpskhitl')).toBeTruthy()
     expect(screen.getByText(expected)).toBeTruthy()
   })
 
-  it.each([false, true])('copies the local-build version from the fallback mark and name (darwin=%s)', async (darwin) => {
+  it.each([false, true])('copies the local-build version from the fallback name (darwin=%s)', async (darwin) => {
     if (darwin) document.documentElement.dataset.platform = 'darwin'
     vi.stubEnv('DSH_CLIENT_COMMIT_HASH', 'abcdef0')
     vi.stubEnv('DSH_CLIENT_VERSION', '1.2.3')
     const writeText = vi.fn<(text: string) => Promise<void>>()
       .mockResolvedValueOnce(undefined)
       .mockRejectedValueOnce(new Error('denied'))
-      .mockResolvedValueOnce(undefined)
     Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText } })
     const startSession = vi.fn()
     const trackEntryClick = vi.fn<SidebarRootComponentProps['trackEntryClick']>()
@@ -320,11 +320,11 @@ describe('SidebarRoot shell', () => {
     vi.useFakeTimers()
 
     const copiedToasts = () => screen.queryAllByRole('alert').map(toast => toast.textContent)
-    await act(async () => { fireEvent.click(screen.getByText('DSH Local Build')) })
+    await act(async () => { fireEvent.click(screen.getByText('dpskhitl')) })
     expect(writeText).toHaveBeenLastCalledWith('1.2.3-abcdef0')
     expect(copiedToasts()).toEqual(['Version copied'])
     // The brand itself keeps its title and version.
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
+    expect(screen.getByText('dpskhitl')).toBeTruthy()
     expect(screen.getByText('1.2.3-abcdef0')).toBeTruthy()
     act(() => { vi.advanceTimersByTime(4000) })
     expect(copiedToasts()).toEqual([])
@@ -333,15 +333,7 @@ describe('SidebarRoot shell', () => {
     await act(async () => { fireEvent.click(screen.getByText('1.2.3-abcdef0')) })
     expect(copiedToasts()).toEqual([])
 
-    // The fallback mark copies too, and its click still reaches document.
-    const documentClick = vi.fn()
-    document.addEventListener('click', documentClick)
-    const mark = screen.getByText('DSH Local Build').closest('[aria-hidden]')!.querySelector('svg')!
-    await act(async () => { fireEvent.click(mark) })
-    document.removeEventListener('click', documentClick)
-    expect(documentClick).toHaveBeenCalledOnce()
-    expect(writeText).toHaveBeenCalledTimes(3)
-    expect(copiedToasts()).toEqual(['Version copied'])
+    expect(writeText).toHaveBeenCalledTimes(2)
     expect(startSession).not.toHaveBeenCalled()
     // Copying the version is not a New Session click.
     expect(trackEntryClick).not.toHaveBeenCalled()
@@ -370,7 +362,7 @@ describe('SidebarRoot shell', () => {
         options?.fallback ?? null) as SidebarRootComponentProps['renderSlot']}
     />)
 
-    expect(screen.getByText('DSH Local Build')).toBeTruthy()
+    expect(screen.getByText('dpskhitl')).toBeTruthy()
   })
 
   it('hands the region its wide flag and clamps expandSidebar to the collapsed state', () => {

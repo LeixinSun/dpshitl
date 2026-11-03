@@ -1,0 +1,20 @@
+# Deployment overlay for an expert-facing `dsh web` instance.
+#
+#   dsh web --patch /path/to/expert-web.overlay.yml
+#
+# Credentials belong to the server here: the operator supplies the provider key
+# through the environment or the credential store, and experts never sign in,
+# see a key, or choose a model. See docs/hitl/deployment.md.
+
+# The account UI — the sidebar account launcher, Account settings, and the
+# model-onboarding sign-in step. Disabling the row leaves the settings launcher
+# on its own plain Settings button.
+- id: ui-settings-account
+  disabled: true
+
+# Pin the model every new Session starts on, so no one has to choose one.
+# Set these to the provider and model this deployment pays for.
+- id: agent-default-model
+  config:
+    provider: deepseek-official
+    model: deepseek-flash

@@ -1,0 +1,25 @@
+# Bilingual-pair consistency record for 2026-11-03-hitl-expert-channel.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write .agents/notes/proposed/feature/2026-11-03-hitl-expert-channel.md
+/agent-note-expert-channel-hitl-for-an-rci-system:
+  en: 56327ad45d4e4299
+  zh: 07159b737e4849c1
+/agent-note-expert-channel-hitl-for-an-rci-system/problem:
+  en: 8c0d71295b93acbc
+  zh: dbc9924a66ffbca6
+/agent-note-expert-channel-hitl-for-an-rci-system/proposal:
+  en: 96fb263d011c3384
+  zh: 1a16079379bbe61c
+/agent-note-expert-channel-hitl-for-an-rci-system/what-this-borrows-and-what-it-does-not:
+  en: 010d2f37d2c13dd1
+  zh: 781262071723b47e
+/agent-note-expert-channel-hitl-for-an-rci-system/alternatives-considered:
+  en: fe1a1f01ed632600
+  zh: 9f0ca178fe259979
+/agent-note-expert-channel-hitl-for-an-rci-system/acceptance-criteria:
+  en: f66a01f9827a755d
+  zh: 2e713c9beb0925ba
+/agent-note-expert-channel-hitl-for-an-rci-system/risks:
+  en: a934445fc51226c9
+  zh: 85dcd9bbfc80c52d

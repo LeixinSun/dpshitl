@@ -1,0 +1,43 @@
+# Bilingual-pair consistency record for creator-mode.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/hitl/creator-mode.md
+/creator-mode:
+  en: 2e538ac04043dfbc
+  zh: d06de976bb7d601f
+/creator-mode/why-the-prompts-must-change:
+  en: 18607119706a9360
+  zh: c8c38eddc251f6e9
+/creator-mode/the-creator-agent-s-system-prompt:
+  en: a9beb2621777f506
+  zh: e4bea3ee31b00637
+/creator-mode/the-creator-agent-s-system-prompt/1-who-it-is-and-what-it-produces:
+  en: 0aba6b24dc1febc5
+  zh: 921412053945c7a2
+/creator-mode/the-creator-agent-s-system-prompt/2-the-embedding-point-and-manifest-reference:
+  en: af6e0bdab2f6f57d
+  zh: 266c2eabb5a9e58c
+/creator-mode/the-creator-agent-s-system-prompt/3-the-data-plane-with-a-real-response-sample-per-provider:
+  en: 5dc858d078a330b7
+  zh: 9376274fd8606bd5
+/creator-mode/the-creator-agent-s-system-prompt/4-a-map-of-the-rci-system:
+  en: 8a3f7b19baa404c3
+  zh: c8db06a44e4c7d97
+/creator-mode/turning-a-sentence-into-a-specification:
+  en: 4f775c4f9056b66d
+  zh: b8946968c2f18569
+/creator-mode/the-workflow:
+  en: eb55a4ee9d525c05
+  zh: 3d129a3833189404
+/creator-mode/hard-rules-for-the-skill:
+  en: f6d13d4123d84a55
+  zh: 25c084b9070d1e33
+/creator-mode/permissions-and-revocability:
+  en: 8e9b2f30a8413217
+  zh: f5a9963ef881f32f
+/creator-mode/using-dsh-as-the-creator-agent-s-harness:
+  en: 5440dcd86020d4f1
+  zh: dd0b1bea9ba89279
+/creator-mode/how-to-tell-it-is-working:
+  en: 990fd8fc165006ab
+  zh: a6589ebe8c51c986

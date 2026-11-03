@@ -1,0 +1,16 @@
+# Bilingual-pair consistency record for build-prompt.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/hitl/build-prompt.md
+/the-build-prompt:
+  en: 7dcd416242c0bcde
+  zh: 7accebf515e4bcb3
+/the-build-prompt/what-to-fill-in:
+  en: b4f309c05420288d
+  zh: 50906e169b0b5e9c
+/the-build-prompt/the-prompt:
+  en: 244936580e3c00ac
+  zh: 0bdeea41534e0b60
+/the-build-prompt/why-it-is-shaped-this-way:
+  en: 0b62c77dfb3e36c7
+  zh: eb865c74d0bff5a4

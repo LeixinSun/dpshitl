@@ -1,0 +1,28 @@
+# Bilingual-pair consistency record for deployment.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/hitl/deployment.md
+/deploying-the-expert-web-instance:
+  en: 58046a675dd06626
+  zh: 7be918469cf2e520
+/deploying-the-expert-web-instance/what-the-expert-sees:
+  en: 76918a3cf95205eb
+  zh: a0f936ac0fee1bb1
+/deploying-the-expert-web-instance/1-give-the-host-a-key:
+  en: 0cef6d125a04ead8
+  zh: 1ca8f742d6ecddc4
+/deploying-the-expert-web-instance/2-pin-the-model:
+  en: 456485105a7319e7
+  zh: 5d3d6de1945c48bf
+/deploying-the-expert-web-instance/3-apply-the-deployment-overlay:
+  en: 0f514f7651b6ad04
+  zh: 3dd3e11e34df5ad7
+/deploying-the-expert-web-instance/4-decide-who-may-open-it:
+  en: abe1bdb09a03876b
+  zh: c9adc21238d2d32e
+/deploying-the-expert-web-instance/what-this-does-not-hide:
+  en: 1bd8771da98a7377
+  zh: fc329e93c1a708a6
+/deploying-the-expert-web-instance/checking-the-result:
+  en: 925b1c1d492d3c85
+  zh: 52563730a6f438ec

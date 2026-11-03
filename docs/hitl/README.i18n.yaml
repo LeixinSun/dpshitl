@@ -1,0 +1,28 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/hitl/README.md
+/expert-channel-hitl:
+  en: 035d560966962def
+  zh: 696608efcf9d1216
+/expert-channel-hitl/the-loop:
+  en: a8085ee92009bf1e
+  zh: a32e32dce8a316e5
+/expert-channel-hitl/three-agents-with-non-overlapping-jobs:
+  en: ceb8413cd8d1946f
+  zh: d3ab5cb189c6df74
+/expert-channel-hitl/the-event-model:
+  en: 85340cd7c6cd31a8
+  zh: 15e8fc1e0f62e6ff
+/expert-channel-hitl/the-three-parts-of-a-question-page:
+  en: 2df476aa53ded3e9
+  zh: f8e8972e95752635
+/expert-channel-hitl/two-kinds-of-injection:
+  en: 1d7eed6e31da7cae
+  zh: dfa1d61458f12e21
+/expert-channel-hitl/deployment:
+  en: 719e9b61c6403edf
+  zh: 09b202c89418d078
+/expert-channel-hitl/relationship-to-deepseek-harness:
+  en: 0bd77c434f2848f2
+  zh: e69f23eae4790f4c

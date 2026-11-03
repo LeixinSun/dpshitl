@@ -1,0 +1,28 @@
+# Bilingual-pair consistency record for question-contract.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/hitl/question-contract.md
+/the-question-contract:
+  en: 49846bb997e8ec4e
+  zh: 21d053fd3c38cc5c
+/the-question-contract/who-asks:
+  en: be598414c44f4131
+  zh: 2631719a9d51d291
+/the-question-contract/question-fields:
+  en: e20c19944b6b89eb
+  zh: 0f81740d759bad3f
+/the-question-contract/sectioning-the-context:
+  en: 64ff3f635d8080d8
+  zh: 4640481a9c2b88ea
+/the-question-contract/rate-limiting-and-deduplication:
+  en: 27cfeb56d6891b8e
+  zh: dd31f0b7731d851e
+/the-question-contract/reaching-the-inbox:
+  en: d849811413e3b885
+  zh: 29e61298e0ec41fd
+/the-question-contract/notification:
+  en: 7d3675b9de32c525
+  zh: 86d376614459ba78
+/the-question-contract/receipts:
+  en: 683c6beb5616b399
+  zh: fae594078b368735

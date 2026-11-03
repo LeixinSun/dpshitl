@@ -1,0 +1,43 @@
+# Bilingual-pair consistency record for extraction-and-injection.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/hitl/extraction-and-injection.md
+/extraction-and-injection:
+  en: 84f2dabd07c24555
+  zh: 0996283490679f44
+/extraction-and-injection/the-state-machine:
+  en: 68562c4de1096142
+  zh: fc21a98ff926b333
+/extraction-and-injection/the-extractor-agent:
+  en: 615b34af5badb81f
+  zh: 49b2dfd339288f92
+/extraction-and-injection/the-extractor-agent/the-prompt:
+  en: 02a50487fa5c5be3
+  zh: a202b2aae68587d8
+/extraction-and-injection/the-extractor-agent/the-output-contract:
+  en: cbb0f1b2b03dd2c4
+  zh: a12c70000361f1f6
+/extraction-and-injection/the-extractor-agent/parsing-and-validation:
+  en: 3eac818e4bd9f5c5
+  zh: 282402ce8aed0dc2
+/extraction-and-injection/the-extractor-agent/when-the-discussion-has-no-expert-message:
+  en: 73da122cfe3f1cba
+  zh: 14c88cc4b8781190
+/extraction-and-injection/extracting-an-expert-initiated-injection:
+  en: a6414d35c263ad1c
+  zh: d8090dfeba7312c1
+/extraction-and-injection/delivery:
+  en: 58bb0b1be7501aba
+  zh: 53396a6ed60df689
+/extraction-and-injection/delivery/the-payload:
+  en: 634543b6e62324da
+  zh: f954823df92cafda
+/extraction-and-injection/delivery/three-sink-types:
+  en: d8f9a09d12e91859
+  zh: b68192797cae01fa
+/extraction-and-injection/delivery/what-the-injector-gets-right:
+  en: 164d007fc2e137f5
+  zh: 5476ac35a985cd4e
+/extraction-and-injection/failure-must-show:
+  en: 1e3af36665163bb9
+  zh: 53c87b4268721f06

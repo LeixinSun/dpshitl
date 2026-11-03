@@ -1,8 +1,28 @@
 /** Inbox row derivation: the questions the running agents are waiting on. */
 
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type { SessionPendingInteraction, SessionStatusSnapshot } from '@deepseek-ai/dsh-client-ui-session/client'
 import type { InboxLocaleKey } from './locales.ts'
+
+/**
+ * The pending-interaction facts this page reads, which is far less than any
+ * one domain's carrier declares. Reading the minimum keeps a kind this
+ * package does not know listable, and keeps the page off the closed union
+ * that declaration merging assembles.
+ */
+export interface WaitingInteraction {
+  /** Request identity; a replacement request carries a new one. */
+  readonly key: string
+  /** The raising domain's presentation discriminator. */
+  readonly kind: string
+  /** Present on carriers that name their questions. */
+  readonly questions?: readonly { readonly header?: string; readonly question?: string }[] | undefined
+}
+
+/** One Session's UI status, narrowed to what the inbox reads. */
+export interface WaitingStatus {
+  /** The Session's highest-precedence request awaiting an answer. */
+  readonly pendingInteraction?: WaitingInteraction | undefined
+}
 
 /** One waiting question as the inbox list presents it. */
 export interface InboxRow {
@@ -18,11 +38,6 @@ export interface InboxRow {
   readonly count: number
 }
 
-/** Pending-interaction carriers that name their questions; other kinds list without a headline. */
-interface QuestionCarrier {
-  readonly questions?: readonly { readonly header?: string; readonly question?: string }[]
-}
-
 /**
  * Read the headline and question count off a pending interaction.
  *
@@ -32,8 +47,8 @@ interface QuestionCarrier {
  * @param interaction - the session's highest-precedence pending request.
  * @returns the headline (absent when the carrier names none) and the question count.
  */
-function describe(interaction: SessionPendingInteraction): { headline: string | undefined; count: number } {
-  const questions = (interaction as SessionPendingInteraction & QuestionCarrier).questions
+function describe(interaction: WaitingInteraction): { headline: string | undefined; count: number } {
+  const { questions } = interaction
   if (questions === undefined || questions.length === 0) return { headline: undefined, count: 1 }
   const first = questions[0]
   return { headline: first?.question ?? first?.header, count: questions.length }
@@ -54,7 +69,7 @@ const KIND_LABEL: Readonly<Record<string, InboxLocaleKey>> = {
  * @param statuses - current UI status indexed by Session identity.
  * @returns one row per Session awaiting an answer.
  */
-export function waitingRows(statuses: SessionStatusSnapshot): readonly InboxRow[] {
+export function waitingRows(statuses: ReadonlyMap<SessionId, WaitingStatus>): readonly InboxRow[] {
   const rows: InboxRow[] = []
   for (const [sessionId, status] of statuses) {
     const interaction = status.pendingInteraction

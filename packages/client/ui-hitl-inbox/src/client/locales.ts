@@ -1,5 +1,14 @@
 /** Expert inbox copy. */
 
+import type {} from '@deepseek-ai/dsh-client-ui-slots'
+
+declare module '@deepseek-ai/dsh-client-ui-slots' {
+  interface LocaleNamespaceMap {
+    /** Expert inbox copy. */
+    hitlInbox: InboxLocaleKey
+  }
+}
+
 /** Simplified Chinese dictionary and key source of truth. */
 export const zh = {
   panel: '收件箱',

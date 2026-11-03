@@ -22,18 +22,11 @@ import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {} from '@deepseek-ai/dsh-client-ui-workspace/client'
 import { InboxPage, type InboxInjected } from './InboxPage.tsx'
 import { InboxPanelIcon } from './InboxPanelIcon.tsx'
-import { en, ja, es, fr, de, ru, pt, zh, type InboxLocaleKey } from './locales.ts'
+import { en, ja, es, fr, de, ru, pt, zh } from './locales.ts'
 
 export type { InboxPageProps, InboxInjected } from './InboxPage.tsx'
 export type { InboxRow } from './inbox-rows.ts'
 export type { InboxLocaleKey } from './locales.ts'
-
-declare module '@deepseek-ai/dsh-client-ui-slots' {
-  interface LocaleNamespaceMap {
-    /** Expert inbox copy. */
-    hitlInbox: InboxLocaleKey
-  }
-}
 
 /** Dictionary namespace owned by this plugin. */
 const NS = 'hitlInbox'

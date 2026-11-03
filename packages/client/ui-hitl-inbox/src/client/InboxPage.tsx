@@ -8,6 +8,7 @@ import type { ReactNode } from 'react'
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import { waitingRows, type InboxRow } from './inbox-rows.ts'
+// The locale module carries the namespace declaration that gives this page its `t`.
 import type { InboxLocaleKey } from './locales.ts'
 import css from './InboxPage.module.css'
 
@@ -17,8 +18,15 @@ export interface InboxInjected {
   openSession: (sessionId: SessionId) => void
 }
 
-/** Full component props assembled by the main slot renderer. */
-export type InboxPageProps = PropsRuntime<'main'> & PropsLocale<'hitlInbox'> & InjectFace<InboxInjected>
+/**
+ * What this page reads of the main panel's share: the two Session seats, its
+ * copy, and navigation. Declaring the subset keeps the page testable without
+ * the renderer, and the slot renderer still passes the complete share.
+ */
+export type InboxPageProps =
+  Pick<PropsRuntime<'main'>, 'useSessions' | 'useSessionStatus'>
+  & PropsLocale<'hitlInbox'>
+  & InjectFace<InboxInjected>
 
 /** One waiting row with the Session title resolved for display. */
 interface DisplayRow extends InboxRow {

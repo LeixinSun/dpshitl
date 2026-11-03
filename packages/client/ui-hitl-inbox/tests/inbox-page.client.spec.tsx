@@ -2,40 +2,41 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type {
-  SessionPendingInteraction, SessionStatus, SessionStatusSnapshot,
-} from '@deepseek-ai/dsh-client-ui-session/client'
+import type { WaitingInteraction, WaitingStatus } from '../src/client/inbox-rows.ts'
 import { InboxPage, type InboxPageProps } from '../src/client/InboxPage.tsx'
-import { en, type InboxLocaleKey } from '../src/client/locales.ts'
+import type { TranslateNS } from '@deepseek-ai/dsh-client-ui-slots'
+import { en } from '../src/client/locales.ts'
 
 afterEach(cleanup)
 
 const sessionId = (value: string): SessionId => value as SessionId
 
-const t = (key: InboxLocaleKey): string => en[key]
+// The page reads only this namespace's own keys; the shared vocabulary is unused here.
+const t = ((key: keyof typeof en) => en[key]) as TranslateNS<'hitlInbox'>
 
-function waiting(id: string, questions?: readonly { question: string }[]): readonly [SessionId, SessionStatus] {
-  const interaction = {
-    key: `${id}-request`, kind: 'question', sessionId: sessionId(id), ...(questions === undefined ? {} : { questions }),
-  } as SessionPendingInteraction
-  return [sessionId(id), { running: true, pendingInteraction: interaction, completionUnread: false }]
+function waiting(id: string, questions?: readonly { question: string }[]): readonly [SessionId, WaitingStatus] {
+  const interaction: WaitingInteraction = {
+    key: `${id}-request`, kind: 'question', ...(questions === undefined ? {} : { questions }),
+  }
+  return [sessionId(id), { pendingInteraction: interaction }]
 }
 
+/** The standing seats and injected face {@link InboxPage} reads, built without the renderer. */
 function mount(
-  statuses: readonly (readonly [SessionId, SessionStatus])[],
+  statuses: readonly (readonly [SessionId, WaitingStatus])[],
   titles: Readonly<Record<string, string>> = {},
   openSession = vi.fn<(id: SessionId) => void>(),
 ) {
-  const snapshot: SessionStatusSnapshot = new Map(statuses)
+  const snapshot: ReadonlyMap<SessionId, WaitingStatus> = new Map(statuses)
   const list = {
     byId: Object.fromEntries(Object.entries(titles).map(([id, displayTitle]) => [id, { displayTitle }])),
   }
-  const props = {
-    useSessionStatus: (select: (value: SessionStatusSnapshot) => unknown) => select(snapshot),
-    useSessions: (select: (value: unknown) => unknown) => select(list),
+  const props: InboxPageProps = {
+    useSessionStatus: select => select(snapshot as never),
+    useSessions: select => select(list as never),
     openSession,
     t,
-  } as unknown as InboxPageProps
+  }
   return { view: render(<InboxPage {...props} />), openSession }
 }
 
